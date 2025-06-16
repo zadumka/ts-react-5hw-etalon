@@ -1,16 +1,16 @@
-export type NoteTag = "Todo" | "Work" | "Personal" | "Meeting" | "Shopping";
+export type Tag = "Work" | "Personal" | "Meeting" | "Shooping" | "Todo";
 
 export interface Note {
   id: number;
   title: string;
   content: string;
-  tag: NoteTag;
   createdAt: string;
   updatedAt: string;
+  tag: Tag;
 }
 
-export interface NewNoteContent {
+export interface NewNoteData {
   title: string;
-  content?: string;
-  tag: NoteTag;
+  content: string;
+  tag: Tag;
 }
