@@ -1,11 +1,9 @@
-import axios from 'axios';
-import { Note } from '../types/note';
+import axios from "axios";
+import { Note, NewNoteContent } from "../types/note";
 
-axios.defaults.baseURL = 'https://notehub-public.goit.study/api';
+axios.defaults.baseURL = "https://notehub-public.goit.study/api";
 
-axios.defaults.headers.common.Authorization = `Bearer ${
-  import.meta.env.VITE_BACKEND_TOKEN
-}`;
+axios.defaults.headers.common.Authorization = `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`;
 
 interface FetchNotesResponse {
   notes: Note[];
@@ -13,9 +11,9 @@ interface FetchNotesResponse {
 }
 
 export const fetchNotes = async (searchText: string, page: number) => {
-  const response = await axios.get<FetchNotesResponse>('/notes', {
+  const response = await axios.get<FetchNotesResponse>("/notes", {
     params: {
-      ...(searchText !== '' && { search: searchText }),
+      ...(searchText !== "" && { search: searchText }),
       page,
       perPage: 12,
     },
@@ -23,14 +21,8 @@ export const fetchNotes = async (searchText: string, page: number) => {
   return response.data;
 };
 
-interface NewNoteContent {
-  title: string;
-  content?: string;
-  tag: string;
-}
-
 export const createNote = async (newNote: NewNoteContent) => {
-  const response = await axios.post<Note>('/notes', newNote);
+  const response = await axios.post<Note>("/notes", newNote);
   return response.data;
 };
 
