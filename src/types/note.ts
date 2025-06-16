@@ -4,9 +4,9 @@ export interface Note {
   id: number;
   title: string;
   content: string;
-  tag: string;
+  tag: NoteTag;
   createdAt: string;
-  updatedAt: NoteTag;
+  updatedAt: string;
 }
 
 export interface NewNoteContent {
